@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+        transition: all ease 0.5s;
+      }
+
+      .modal.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal.show .modal-container {
+        scale: 1;
+      }
+
+      .modal-container {
+        position: relative;
+        max-width: calc(100% - 40px);
+        width: 400px;
+        padding: 10px;
+        border-radius: 10px;
+        background: #fff;
+        scale: 0.8;
+        transition: all ease 0.5s;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        background: transparent;
+        border: 1px solid #ccc;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+      }
+
+      .modal-header {
+        border-bottom: 1px solid #ccc;
+      }
+
+      .modal-content {
+        max-height: 70vh;
+        padding: 10px 0;
+        overflow-y: auto;
+      }
+
+      .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 10px;
+        border-top: 1px solid #ccc;
+      }
+
+      .modal-btn {
+        padding: 4px 10px;
+        border-radius: 4px;
+        border: none;
+        background: #ccc;
+      }
+
+      .modal-btn + .modal-btn {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>HEADER</header>
+      <main>
+        <button id="open-newsfeed">Open modal</button>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, totam,
+          molestias fugiat numquam quas quibusdam aperiam voluptatem laborum at
+          suscipit autem incidunt tempore exercitationem? Fugiat, qui maxime!
+          Adipisci voluptatem minus officia. Possimus, maiores minima. Nam
+          maiores blanditiis veritatis voluptate iusto minus eum consequatur
+          ullam quam repellat quibusdam nisi maxime tempore, nulla itaque at
+          repellendus similique rem error! Dolor autem cum praesentium ut error
+          reiciendis, in veritatis provident libero quis optio hic ducimus sed
+          voluptates, illo voluptatum at dolore labore, officia adipisci et
+          iste. Quia quas, reiciendis suscipit similique, eaque saepe
+          praesentium labore quod pariatur, iusto maxime quis eum accusantium
+          nesciunt voluptas animi est voluptates rem aperiam? Sunt tempora
+          voluptates autem fugit qui maiores ea tenetur et unde, quas, culpa
+          mollitia perspiciatis sit quam! Placeat eius vitae corrupti aliquam
+          commodi quibusdam illum soluta nesciunt ipsum, libero laborum
+          reiciendis saepe vero assumenda ad dolorem culpa temporibus. A dolores
+          nam ipsam provident vitae molestiae quis perspiciatis dolorum esse
+          laudantium! Similique magnam consectetur qui perferendis dolores neque
+          ipsa. Explicabo dignissimos fugit nobis fuga iste harum culpa
+          distinctio consequuntur, ex perspiciatis rem cumque deleniti earum
+          voluptatum suscipit impedit? Ea libero tempora minus. Nemo excepturi
+          at quo necessitatibus maxime error aspernatur consequuntur, enim
+          asperiores. Pariatur facilis fuga qui ducimus natus sapiente.
+          Reprehenderit error temporibus voluptatibus veritatis amet officiis!
+          Dolore laboriosam harum accusamus rem minima itaque. Corporis iusto
+          molestiae, consectetur magni nam molestias quibusdam et labore sed
+          reprehenderit! Esse consequuntur omnis adipisci praesentium iure dolor
+          ut vero non voluptate itaque fugit illo voluptatibus deleniti iusto,
+          voluptates mollitia perferendis numquam? Officiis maiores doloribus
+          sint veritatis delectus illum atque beatae harum sunt earum, explicabo
+          recusandae corporis aspernatur et sed maxime voluptate dolorem tenetur
+          tempora ipsa. Blanditiis, vel. Nulla accusamus ea ab eum sapiente?
+          Illum eaque molestiae error accusamus! Quasi officiis porro quas id,
+          provident autem maxime ullam veritatis temporibus saepe eum a error
+          explicabo odio quam quidem quo ut. Labore, veniam vero omnis, impedit
+          in expedita tempore accusantium repudiandae sint esse enim reiciendis
+          ad illo cupiditate quisquam, aspernatur eos deleniti quaerat vitae
+          aliquid assumenda! Aperiam nam officiis enim aspernatur illum nemo,
+          animi error at magni tenetur iste assumenda repellat eveniet
+          accusantium ratione iusto! Recusandae autem natus itaque laborum rerum
+          delectus repellat quibusdam cumque aliquam explicabo nihil dolor odio
+          molestiae dignissimos officia eaque illo harum, laboriosam, aliquid
+          ipsum quos iusto! Quia veritatis, perferendis iusto optio porro ullam
+          modi repudiandae repellendus voluptate minima eaque labore beatae.
+          Necessitatibus numquam libero nulla modi inventore optio cupiditate.
+          Libero, porro eius? Quasi cupiditate ipsum ea inventore maiores rerum
+          magnam, tempora voluptatibus esse earum numquam optio et obcaecati
+          aliquam libero odit voluptate provident illo. Eius officiis veniam
+          deserunt ab quia accusantium voluptatum amet nisi aperiam
+          necessitatibus voluptas quis debitis cumque tenetur consequuntur
+          culpa, sapiente iste velit exercitationem harum deleniti quas. Dolorum
+          sed nobis eveniet distinctio. Repudiandae laudantium ut perspiciatis
+          aut, ad minus, enim voluptatibus quae aspernatur ducimus quidem atque
+          corrupti. Magni, labore! Velit sapiente nisi enim facilis est
+          voluptatibus, illo, alias veritatis autem expedita, ratione molestias.
+          Rerum nihil consectetur cum quasi, ut reiciendis itaque iste quo
+          eveniet aut, nostrum aliquam blanditiis illo voluptas obcaecati?
+          Libero quaerat veritatis repellendus suscipit praesentium, sapiente
+          quis, distinctio, magni amet quia ullam debitis. Dolore repudiandae
+          eligendi id fugiat ullam quaerat nostrum saepe quasi temporibus
+          dignissimos assumenda consequatur pariatur tenetur officiis iusto
+          deleniti, soluta laborum, corrupti vitae doloribus eaque. Numquam
+          accusantium veniam impedit consectetur neque alias odit quas et minus
+          labore, praesentium a non necessitatibus aliquid quis eos quidem
+          expedita maiores libero! In minima sed, dicta a exercitationem neque
+          earum autem recusandae unde enim qui nobis, praesentium laborum natus
+          mollitia delectus maxime voluptate nesciunt perspiciatis voluptates,
+          molestiae aperiam? Possimus, fuga. Suscipit impedit sed harum minima
+          commodi deleniti incidunt a quas repellat quia! Temporibus vel in,
+          corporis provident atque iste labore molestias aliquid eveniet
+          laboriosam quisquam libero ab natus ipsa ex dicta? Quia enim saepe
+          adipisci non rerum. Id, molestiae. Natus dolorem hic pariatur quasi
+          saepe quod vero explicabo accusamus esse nemo, cum expedita
+          consequuntur? Dolore, libero? Eos nisi accusamus nesciunt cumque
+          eaque, voluptatum officiis nobis enim consequatur magni maiores modi
+          eum. Laborum earum ut molestias dolor, vero cumque odit minus, iure
+          consequuntur esse itaque illum facilis suscipit. Consequuntur sed
+          sapiente ratione debitis doloremque ullam a quisquam animi deleniti
+          vero velit explicabo, ipsa esse laboriosam est magni architecto,
+          consequatur veniam dolore, saepe mollitia. Ratione aut impedit eius
+          molestias blanditiis architecto modi enim repellendus, eaque nemo sint
+          placeat mollitia iste labore iure soluta veritatis alias, iusto
+          tempora quam maiores reprehenderit dolor earum eveniet. Nisi beatae,
+          fugit deserunt veniam suscipit numquam dolorem illum dolor, facilis
+          dignissimos commodi doloremque laborum, aut neque maxime quos maiores
+          consectetur exercitationem asperiores blanditiis quisquam? Laboriosam
+          quisquam nemo voluptates cupiditate, illo blanditiis nisi tenetur,
+          labore itaque necessitatibus pariatur doloribus enim voluptas earum
+          tempora ipsum? Natus repellat laborum quia quod, aliquid dolores
+          sapiente odit cum sint, hic officia optio dicta! Assumenda
+          reprehenderit consectetur dolore nulla minima impedit, praesentium
+          voluptates similique hic, repellendus ratione doloremque, sunt
+          veritatis modi dolorem quaerat nam aperiam sapiente aliquam dolor
+          alias mollitia velit. Nisi eligendi aperiam explicabo! Atque molestias
+          veniam eaque magni officiis soluta maiores vero perferendis inventore,
+          animi unde sequi officia, magnam tempora, incidunt corporis sit qui
+          facere nostrum? Rem, odit culpa in architecto repellendus
+          perspiciatis, expedita illo ipsam iure recusandae a. Odit, harum
+          consectetur quibusdam necessitatibus, assumenda asperiores magni
+          repellat quisquam quidem provident ipsum adipisci nam accusamus ab,
+          consequuntur temporibus dolorem quam dolore soluta blanditiis
+          architecto ea! Consequuntur maxime nihil perferendis ea, quibusdam
+          dolores voluptate quia est optio doloribus similique fugit laborum
+          cupiditate perspiciatis odio beatae quis. Provident doloribus
+          voluptatum sint dignissimos non amet! Asperiores atque, quam unde,
+          vitae animi similique veniam ea praesentium dolorem consectetur
+          laudantium placeat exercitationem consequuntur ullam nisi iure commodi
+          accusamus dolore iusto? Aliquam quod laboriosam necessitatibus dolores
+          dolorem itaque, beatae odio modi natus consequatur asperiores, animi
+          cupiditate eum quia distinctio perspiciatis numquam officia. Voluptate
+          adipisci sapiente maxime, consectetur cum distinctio, eum, repudiandae
+          alias perspiciatis beatae doloremque dolores nisi nostrum nesciunt id
+          reiciendis a asperiores molestiae porro cupiditate quis. Consequuntur
+          iusto illo nihil perspiciatis non atque, architecto quibusdam?
+          Asperiores iusto quasi quas!
+        </p>
+      </main>
+      <footer>FOOTER</footer>
+    </div>
+
+    <div id="newfeed-modal" class="modal">
+      <div class="modal-container">
+        <button class="modal-close">&times;</button>
+        <div class="modal-header">Header</div>
+        <div class="modal-content">
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum in
+            rerum veniam quibusdam qui, corrupti hic vel doloribus recusandae
+            cumque? Autem reiciendis error ducimus. Esse sequi fugiat tempora
+            natus, perspiciatis, quisquam est sed ex illo ducimus quasi tenetur
+            impedit illum tempore? Dignissimos obcaecati, ex aspernatur
+            distinctio exercitationem tempora provident nam saepe impedit id,
+            reiciendis ducimus doloribus officiis commodi velit. Vitae
+            asperiores vel soluta natus nisi maiores, dolorum quidem fugit. Nemo
+            molestiae, nulla iusto, optio, neque dolore exercitationem incidunt
+            illo dignissimos asperiores aliquid aspernatur! Quaerat odio sint
+            optio iure magni sapiente earum veritatis quia eius. Ratione,
+            consequuntur et quae eligendi corrupti, quis neque sunt animi harum
+            facilis voluptas illum perspiciatis in laboriosam inventore
+            similique accusantium adipisci illo nihil exercitationem voluptate
+            fugit ipsa! Doloribus eligendi rem similique pariatur, sed repellat
+            possimus commodi nemo enim neque molestias laboriosam laudantium
+            vitae quo obcaecati natus? Quae nobis voluptatum, magnam cupiditate
+            aliquid quidem ea libero enim adipisci sequi corrupti accusantium
+            quasi iure nesciunt, soluta sunt obcaecati, distinctio provident
+            itaque tenetur porro veritatis eos consectetur alias. Quidem
+            repellendus labore deserunt deleniti laudantium? Modi ut suscipit
+            omnis veniam reiciendis commodi sed alias voluptate inventore atque,
+            qui vel quasi voluptas repudiandae. Optio cum ipsum architecto, odio
+            consequuntur ipsam consectetur.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-btn">Cancel</button>
+          <button class="modal-btn">Confirm</button>
+        </div>
+      </div>
+    </div>
+    <div id="register-modal" class="modal">
+      <div class="modal-container">
+        <button class="modal-close">&times;</button>
+        <div class="modal-header">Header</div>
+        <div class="modal-content">
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum in
+            rerum veniam quibusdam qui, corrupti hic vel doloribus recusandae
+            cumque? Autem reiciendis error ducimus. Esse sequi fugiat tempora
+            natus, perspiciatis, quisquam est sed ex illo ducimus quasi tenetur
+            impedit illum tempore? Dignissimos obcaecati, ex aspernatur
+            distinctio exercitationem tempora provident nam saepe impedit id,
+            reiciendis ducimus doloribus officiis commodi velit. Vitae
+            asperiores vel soluta natus nisi maiores, dolorum quidem fugit. Nemo
+            molestiae, nulla iusto, optio, neque dolore exercitationem incidunt
+            illo dignissimos asperiores aliquid aspernatur! Quaerat odio sint
+            optio iure magni sapiente earum veritatis quia eius. Ratione,
+            consequuntur et quae eligendi corrupti, quis neque sunt animi harum
+            facilis voluptas illum perspiciatis in laboriosam inventore
+            similique accusantium adipisci illo nihil exercitationem voluptate
+            fugit ipsa! Doloribus eligendi rem similique pariatur, sed repellat
+            possimus commodi nemo enim neque molestias laboriosam laudantium
+            vitae quo obcaecati natus? Quae nobis voluptatum, magnam cupiditate
+            aliquid quidem ea libero enim adipisci sequi corrupti accusantium
+            quasi iure nesciunt, soluta sunt obcaecati, distinctio provident
+            itaque tenetur porro veritatis eos consectetur alias. Quidem
+            repellendus labore deserunt deleniti laudantium? Modi ut suscipit
+            omnis veniam reiciendis commodi sed alias voluptate inventore atque,
+            qui vel quasi voluptas repudiandae. Optio cum ipsum architecto, odio
+            consequuntur ipsam consectetur.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-btn">Cancel</button>
+          <button class="modal-btn">Confirm</button>
+        </div>
+      </div>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>
