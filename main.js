@@ -2,6 +2,7 @@ const openNewsFeeds = document.querySelector("#open-newsfeed");
 const newsFeedModal = document.querySelector("#newfeed-modal");
 const closeButtons = document.querySelectorAll(".modal-close");
 
+// Hàm tính độ rộng của thanh cuộn
 function getScrollbarWidth() {
   const div = document.createElement("div");
   div.style.overflowY = "scroll";
@@ -10,15 +11,15 @@ function getScrollbarWidth() {
   document.body.appendChild(div);
   const scrollBarWidth = div.offsetWidth - child.offsetWidth;
   document.body.removeChild(div);
-  console.log(scrollBarWidth);
+  return scrollBarWidth;
 }
-
-getScrollbarWidth();
 
 openNewsFeeds.onclick = () => {
   newsFeedModal.classList.add("show");
   // Vô hiệu hoá chức năng cuộn của body khi mở modal
   document.body.style.overflow = "hidden";
+  // Ngăn nội dung của body trên Windows bị giật khi mở modal
+  document.body.style.paddingRight = getScrollbarWidth() + "px";
 };
 
 closeButtons.forEach((closeBtn) => {
@@ -28,6 +29,8 @@ closeButtons.forEach((closeBtn) => {
       modal.classList.remove("show");
       //   Khôi phục chức năng cuộn của body khi đóng modal
       document.body.style.overflow = "";
+      // Ngăn nội dung của body trên Windows bị giật khi đóng modal
+      document.body.style.paddingRight = "";
     }
   };
 });
